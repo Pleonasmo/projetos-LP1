@@ -1,4 +1,9 @@
-float areaQuadrado(float lado);
-float areaRetangulo(float l1, float l2);
-float areaCirculo(float raio);
-float areaTriangulo(float base, float altura);
+#ifndef HEADER_HPP
+#define HEADER_HPP
+
+float areaQuadrado();
+float areaRetangulo();
+float areaCirculo();
+float areaTriangulo();
+
+#endif
