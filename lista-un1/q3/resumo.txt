@@ -1,0 +1,24 @@
+LIST - É um modelo de container com alocação de memória não-contínua, e permite operações fáceis de inserção 
+ou exclusão de itens através do uso de iteradores. Exemplo de uso => Lista de músicas de uma playlist.
+
+QUEUE - São estruturas que armazenam elementos em ordem, como as listas, mas restrigem o acesso a somente 
+o primeiro ou ao último deles. Exemplo de uso => A fila de documentos de uma impressora.
+
+STACK - São tipos de estruturas onde elementos são armazernados, mas somente o último é acessível, como
+ocorre em uma pilha de livros, por exemplo. Exemplo de uso => Funções de desfazer (Ctrl + z) de editores 
+de texto.
+
+DEQUE - São estruturas que podem ser interpretadas como uma fila dupla, onde os elementos podem ser
+inseridos tanto no final como no começo da fila. Exemplo de uso => Históricos de navegadores.
+
+VECTOR - Vetores em C++ são estruturas que representam arrays com alocação dinâmica de memória, elementos
+organizados sequencialmente e indexados, podendo ser acessados aleatoriatoriamente. Exemplo de uso => Uma
+planilha é um exemplo de vetor bidimensional.
+
+SET - É uma estrutura que representa um conjunto como visto na matemática, onde não existe uma relação de
+ordem entre os elementos e o próprio conteúdo indexa a si mesmo, sem repetições de itens. Exemplo de uso =>
+Representações de conjuntos matemáticos.
+
+MAP - É um modelo de container que armazena elementos no padrão chave-valor. Através desse par de elementos,
+cada item de um map (valor) pode ser acessado através de seu índice (chave). Exemplo de uso => A implementação
+de um glossário simples.
