@@ -1,0 +1,5 @@
+chi-café 2.99
+chi-chá 2.99
+chi-suco 3.99
+chi-refri 4.99
+chi-shake 5.99

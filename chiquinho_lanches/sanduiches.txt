@@ -1,0 +1,5 @@
+Chi-vegan 5.99
+Chi-frango 6.99
+Chi-carne 7.99
+Chi-bacon 8.99
+Chi-tudo 9.99
