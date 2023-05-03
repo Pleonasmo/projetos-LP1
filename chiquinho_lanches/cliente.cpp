@@ -11,6 +11,7 @@ using namespace std;
 vector<string> armazenaLinhas(string leitura, string arquivo_txt){
   fstream dados;
   vector<string> itens_arquivo;
+
   dados.open(arquivo_txt);
   while(getline(dados, leitura))
     itens_arquivo.push_back(leitura);
@@ -18,6 +19,17 @@ vector<string> armazenaLinhas(string leitura, string arquivo_txt){
 
   return itens_arquivo;
 }
+
+/*vector<string> divideString(string linha){
+  vector<string> palavras;
+  string palavra;
+  istringstream separar(linha);
+
+  while(getline(separar, palavra, ' '))
+    palavras.push_back(palavra);
+
+  return palavras;
+}*/
 
 map<string, string> addCarrinho(map<string, string> carrinho, string item){
 
@@ -64,11 +76,13 @@ void acessarCliente(){
           cout << "- " << leitura << endl;
         dados.close();
     } else if(escolha == 3){
+        //Seleção de sanduiche do arquivo sanduiches.txt
         itens_arquivo = armazenaLinhas(leitura, "sanduiches.txt");
         for(int i = 0; i < itens_arquivo.size(); i++)
           cout << itens_arquivo[i] << " - ";
         cout << "\n" << endl;
     } else if(escolha == 4){
+        //Seleção de suco do arquivo sucos.txt
         itens_arquivo = armazenaLinhas(leitura, "sucos.txt");
         for(int i = 0; i < itens_arquivo.size(); i++)
           cout << itens_arquivo[i] << " - ";
