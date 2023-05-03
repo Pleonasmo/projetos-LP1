@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <map>
+#include <sstream>
 #include <string.h>
 #include "header.hpp"
 

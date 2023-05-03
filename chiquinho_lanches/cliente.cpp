@@ -2,20 +2,36 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
+#include <vector>
 #include <map>
 #include "header.hpp"
 
 using namespace std;
 
-map<string string> addCarrinho(map<string, string> carrinho, string item){
+vector<string> armazenaLinhas(string leitura, string arquivo_txt){
+  fstream dados;
+  vector<string> itens_arquivo;
+  dados.open(arquivo_txt);
+  while(getline(dados, leitura))
+    itens_arquivo.push_back(leitura);
+  dados.close();
+
+  return itens_arquivo;
+}
+
+map<string, string> addCarrinho(map<string, string> carrinho, string item){
+
+
+
   return carrinho;
 }
 
 //função de acesso ao sistema do cliente
 void acessarCliente(){
   int escolha; //int representando escolha do menu do sistema
-  ifstream dados;
+  fstream dados;
   string leitura;
+  vector<string> itens_arquivo;
   map<string, string> carrinho;
 
   
@@ -41,16 +57,21 @@ void acessarCliente(){
         cout << "- " << leitura << endl;
       dados.close();
     } else if(escolha == 2){
-      //Leitura do arquivo de sucos
-      dados.open("sucos.txt");
-      cout << "\nSucos disponiveis no cardápio: " << endl;
-      while(getline(dados, leitura))
-        cout << "- " << leitura << endl;
-      dados.close();
+        //Leitura do arquivo de sucos
+        dados.open("sucos.txt");
+        cout << "\nSucos disponiveis no cardápio: " << endl;
+        while(getline(dados, leitura))
+          cout << "- " << leitura << endl;
+        dados.close();
     } else if(escolha == 3){
-      //Quebra do laço e saída do sistema
-      cout << "\nSaindo do sistema...\n" << endl;
-      break;
+        itens_arquivo = armazenaLinhas(leitura, "sanduiches.txt");
+        for(int i = 0; i < itens_arquivo.size(); i++)
+          cout << itens_arquivo[i] << " - ";
+        cout << "\n" << endl;
+    } else if(escolha == 6){
+        //Quebra do laço e saída do sistema
+        cout << "\nSaindo do sistema...\n" << endl;
+        break;
     }
   }
   
