@@ -68,6 +68,11 @@ void acessarCliente(){
         for(int i = 0; i < itens_arquivo.size(); i++)
           cout << itens_arquivo[i] << " - ";
         cout << "\n" << endl;
+    } else if(escolha == 4){
+        itens_arquivo = armazenaLinhas(leitura, "sucos.txt");
+        for(int i = 0; i < itens_arquivo.size(); i++)
+          cout << itens_arquivo[i] << " - ";
+        cout << "\n" << endl;
     } else if(escolha == 6){
         //Quebra do laço e saída do sistema
         cout << "\nSaindo do sistema...\n" << endl;
