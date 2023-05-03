@@ -1,5 +1,5 @@
-chi-café 2.99
-chi-chá 2.99
-chi-suco 3.99
-chi-refri 4.99
-chi-shake 5.99
+chi-caju 2.99
+chi-laranja 2.99
+chi-maracujá 3.99
+chi-uva 3.99
+chi-morango 4.99
