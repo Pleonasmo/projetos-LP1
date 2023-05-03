@@ -66,15 +66,29 @@ void acessarGerente(){
               dados.close();
               cout << "------------------------------------\n" << endl;
           } else if(escolha == 3){
+              //Escrita no arquivo de sanduiches
               string sanduiche;
               dados.open("sanduiches.txt", ios::app);
               cout << "\n------------------------------------" <<
               "\nDigite o sanduiche e o preço (nome-do-sanduiche preço):" << endl;
               cin.ignore();
               getline(cin, sanduiche);
-              dados << "\n";
               dados << sanduiche;
+              dados << "\n";
               cout << "\nSanduíche cadastrado!\n" << endl;
+              dados.close();
+              cout << "------------------------------------\n" << endl;
+          } else if(escolha == 4){
+              //Escrita no arquivo de sucos
+              string suco;
+              dados.open("sucos.txt", ios::app);
+              cout << "\n------------------------------------" <<
+              "\nDigite o suco e o preço (nome-do-suco preço):" << endl;
+              cin.ignore();
+              getline(cin, suco);
+              dados << suco;
+              dados << "\n";
+              cout << "\nSuco cadastrado!\n" << endl;
               dados.close();
               cout << "------------------------------------\n" << endl;
           } else if(escolha == 5){
