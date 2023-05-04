@@ -46,7 +46,9 @@ void acessarGerente(){
           cout << "2 - Listar sucos cadastrados" << endl;
           cout << "3 - Cadastrar novo sanduíche" << endl;
           cout << "4 - Cadastrar novo suco" << endl;
-          cout << "5 - Sair do sistema\n" << endl;
+          cout << "5 - Excluir sanduíche" << endl;
+          cout << "6 - Excluir suco" << endl;
+          cout << "7 - Sair do sistema\n" << endl;
         
           cin >> escolha;
           
@@ -95,6 +97,21 @@ void acessarGerente(){
               dados.close();
               cout << "------------------------------------\n" << endl;
           } else if(escolha == 5){
+              //Pesquisa no arquivo txt e remoção de linha
+              ofstream temp;
+              string sanduiche_removido;
+              dados.open("sanduiches.txt");
+              temp.open("temp.txt");
+              cout << "\nDigite corretamente o nome e o valor do sanduiche que deseja remover (nome-do-sanduiche valor):\n" << endl;
+              cin.ignore();
+              getline(cin, sanduiche_removido);
+              while(getline(dados, leitura)){
+                leitura.replace(leitura.find(sanduiche_removido),sanduiche_removido.length(),"");
+                temp << sanduiche_removido << endl;
+              }
+              dados.close();
+              temp.close();
+          } else if(escolha == 7){
               //Quebra do laço e saída do sistema
               cout << "\nSaindo do sistema...\n" << endl;
               break;
