@@ -12,6 +12,7 @@ void acessarCliente();
 void acessarGerente();
 bool validarGerente(string usuario, string senha);
 vector<string> armazenaLinhas(string leitura, string arquivo_txt);
+vector<string> divideString(vector<string> itens_arquivo);
 map<string, string> addCarrinho(map<string, string> carrinho, string item);
 
 #endif

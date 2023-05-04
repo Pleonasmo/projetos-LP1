@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Função para armazenar linhas do arquivo em um vector:
 vector<string> armazenaLinhas(string leitura, string arquivo_txt){
   fstream dados;
   vector<string> itens_arquivo;
@@ -20,18 +21,25 @@ vector<string> armazenaLinhas(string leitura, string arquivo_txt){
   return itens_arquivo;
 }
 
-/*vector<string> divideString(string linha){
+//Função para separar nome do sanduiche do preço re-armazenar no vector:
+vector<string> divideString(vector<string> itens_arquivo){
   vector<string> palavras;
   string palavra;
-  istringstream separar(linha);
 
-  while(getline(separar, palavra, ' '))
-    palavras.push_back(palavra);
+  for(int i = 0; i < itens_arquivo.size(); i++){
+    string linha = itens_arquivo[i];
+    istringstream separar(linha);
+    while(getline(separar, palavra, ' '))
+      palavras.push_back(palavra);
+  }
+  
 
   return palavras;
-}*/
+}
 
-map<string, string> addCarrinho(map<string, string> carrinho, string item){
+
+
+map<string, string> addCarrinho(map<string, string> carrinho){
 
 
 
@@ -43,8 +51,9 @@ void acessarCliente(){
   int escolha; //int representando escolha do menu do sistema
   fstream dados;
   string leitura;
-  vector<string> itens_arquivo;
+  vector<string> itens_arquivo; //Vetor com os itens dos arquivos de texto
   map<string, string> carrinho;
+  map<string, string>::iterator it;
 
   
   
@@ -77,16 +86,40 @@ void acessarCliente(){
         dados.close();
     } else if(escolha == 3){
         //Seleção de sanduiche do arquivo sanduiches.txt
+        string sanduiche_escolhido;
+        cout << "\nDigite corretamente o nome do sanduiche que deseja adicionar ao carrinho: \n" << endl;
+        cin >> sanduiche_escolhido;
         itens_arquivo = armazenaLinhas(leitura, "sanduiches.txt");
-        for(int i = 0; i < itens_arquivo.size(); i++)
-          cout << itens_arquivo[i] << " - ";
+        itens_arquivo = divideString(itens_arquivo);
         cout << "\n" << endl;
+        for(int i = 0; i < itens_arquivo.size(); i++){
+          if(itens_arquivo[i] == sanduiche_escolhido){
+            carrinho.insert(make_pair(itens_arquivo[i],itens_arquivo[i+1]));
+          }
+        }
+        for(it=carrinho.begin(); it!=carrinho.end(); ++it){
+          cout << it->first << " => " << it->second << '\n';
+        }
+          
     } else if(escolha == 4){
         //Seleção de suco do arquivo sucos.txt
+        string suco_escolhido;
+        cout << "\nDigite corretamente o nome do suco que deseja adicionar ao carrinho: \n" << endl;
+        cin >> suco_escolhido;
         itens_arquivo = armazenaLinhas(leitura, "sucos.txt");
-        for(int i = 0; i < itens_arquivo.size(); i++)
-          cout << itens_arquivo[i] << " - ";
+        itens_arquivo = divideString(itens_arquivo);
         cout << "\n" << endl;
+        for(int i = 0; i < itens_arquivo.size(); i++){
+          if(itens_arquivo[i] == suco_escolhido){
+            carrinho.insert(make_pair(itens_arquivo[i],itens_arquivo[i+1]));
+          }
+        }
+        for(it=carrinho.begin(); it!=carrinho.end(); ++it){
+          cout << it->first << " => " << it->second << '\n';
+        }
+    } else if(escolha == 5){
+        //Quebra do laço e saída do sistema
+        
     } else if(escolha == 6){
         //Quebra do laço e saída do sistema
         cout << "\nSaindo do sistema...\n" << endl;
