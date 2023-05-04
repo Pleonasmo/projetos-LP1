@@ -36,8 +36,9 @@ void acessarGerente(){
         cout << "\nAcesso permitido!" << endl;
       
         int escolha; //int representando escolha do menu do sistema
-        fstream dados;
-        string leitura;
+        fstream dados; //variavel fstream para abrir arquivo
+        string leitura; //string para leitura de linha do arquivo
+        vector<string> linhas_arquivo; //vector para armazenar linhas do arquivo
 
       //laço while do menu do sistema do gerente
         while(true){
@@ -98,19 +99,27 @@ void acessarGerente(){
               cout << "------------------------------------\n" << endl;
           } else if(escolha == 5){
               //Pesquisa no arquivo txt e remoção de linha
-              ofstream temp;
               string sanduiche_removido;
               dados.open("sanduiches.txt");
-              temp.open("temp.txt");
               cout << "\nDigite corretamente o nome e o valor do sanduiche que deseja remover (nome-do-sanduiche valor):\n" << endl;
               cin.ignore();
               getline(cin, sanduiche_removido);
-              while(getline(dados, leitura)){
-                leitura.replace(leitura.find(sanduiche_removido),sanduiche_removido.length(),"");
-                temp << sanduiche_removido << endl;
+              while(getline(dados, leitura))
+                linhas_arquivo.push_back(leitura);
+              for(int i = 0; i < linhas_arquivo.size(); i++){
+                if(linhas_arquivo[i] == sanduiche_removido){
+                  linhas_arquivo.erase(linhas_arquivo.begin() + i);
+                  cout << "\nSanduíche removido do cardapio!" << endl;
+                  break;
+                }
               }
+              for(int i = 0; i < linhas_arquivo.size(); i++){
+                dados << linhas_arquivo[i];
+                dados << "\n";
+              }
+              cout << "\n" << endl;
               dados.close();
-              temp.close();
+              linhas_arquivo.clear();
           } else if(escolha == 7){
               //Quebra do laço e saída do sistema
               cout << "\nSaindo do sistema...\n" << endl;
