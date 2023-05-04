@@ -99,7 +99,7 @@ void acessarGerente(){
               dados.close();
               cout << "------------------------------------\n" << endl;
           } else if(escolha == 5){
-              //Pesquisa no arquivo txt e remoção de linha
+              //Pesquisa no arquivo sanduiches.txt e remoção de linha
               string sanduiche_removido;
               dados.open("sanduiches.txt");
               cout << "\nDigite corretamente o nome e o valor do sanduiche que deseja remover (nome-do-sanduiche valor):\n" << endl;
@@ -115,6 +115,30 @@ void acessarGerente(){
                 }
               }
               idados.open("sanduiches.txt");
+              for(int i = 0; i < linhas_arquivo.size(); i++){
+                idados << linhas_arquivo[i];
+                idados << "\n";
+              }
+              cout << "\n" << endl;
+              idados.close();
+              linhas_arquivo.clear();
+          } else if(escolha == 6){
+              //Pesquisa no arquivo sucos.txt e remoção de linha
+              string suco_removido;
+              dados.open("sucos.txt");
+              cout << "\nDigite corretamente o nome e o valor do suco que deseja remover (nome-do-suco valor):\n" << endl;
+              cin.ignore();
+              getline(cin, suco_removido);
+              while(getline(dados, leitura))
+                linhas_arquivo.push_back(leitura);
+              for(int i = 0; i < linhas_arquivo.size(); i++){
+                if(linhas_arquivo[i] == suco_removido){
+                  linhas_arquivo.erase(linhas_arquivo.begin() + i);
+                  cout << "\nSuco removido do cardapio!" << endl;
+                  break;
+                }
+              }
+              idados.open("sucos.txt");
               for(int i = 0; i < linhas_arquivo.size(); i++){
                 idados << linhas_arquivo[i];
                 idados << "\n";

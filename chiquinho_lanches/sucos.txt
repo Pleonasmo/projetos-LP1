@@ -3,4 +3,3 @@ chi-laranja 2.99
 chi-maracujá 3.99
 chi-uva 3.99
 chi-morango 4.99
-chi-abacaxi 2.99
