@@ -36,6 +36,7 @@ void acessarGerente(){
         cout << "\nAcesso permitido!" << endl;
       
         int escolha; //int representando escolha do menu do sistema
+        ofstream idados; //variavel ifstream para sobrescrever arquivo
         fstream dados; //variavel fstream para abrir arquivo
         string leitura; //string para leitura de linha do arquivo
         vector<string> linhas_arquivo; //vector para armazenar linhas do arquivo
@@ -113,12 +114,13 @@ void acessarGerente(){
                   break;
                 }
               }
+              idados.open("sanduiches.txt");
               for(int i = 0; i < linhas_arquivo.size(); i++){
-                dados << linhas_arquivo[i];
-                dados << "\n";
+                idados << linhas_arquivo[i];
+                idados << "\n";
               }
               cout << "\n" << endl;
-              dados.close();
+              idados.close();
               linhas_arquivo.clear();
           } else if(escolha == 7){
               //Quebra do laço e saída do sistema
