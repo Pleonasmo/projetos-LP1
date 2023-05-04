@@ -95,12 +95,9 @@ void acessarCliente(){
         for(int i = 0; i < itens_arquivo.size(); i++){
           if(itens_arquivo[i] == sanduiche_escolhido){
             carrinho.insert(make_pair(itens_arquivo[i],itens_arquivo[i+1]));
+            cout << "Item adicionado no seu carrinho!" << endl;
           }
-        }
-        for(it=carrinho.begin(); it!=carrinho.end(); ++it){
-          cout << it->first << " => " << it->second << '\n';
-        }
-          
+        } 
     } else if(escolha == 4){
         //Seleção de suco do arquivo sucos.txt
         string suco_escolhido;
@@ -112,14 +109,18 @@ void acessarCliente(){
         for(int i = 0; i < itens_arquivo.size(); i++){
           if(itens_arquivo[i] == suco_escolhido){
             carrinho.insert(make_pair(itens_arquivo[i],itens_arquivo[i+1]));
+            cout << "Item adicionado no seu carrinho!" << endl;
           }
         }
+    } else if(escolha == 5){
+        //Acesso ao carrinho, leitura do map e impressão do total:
+        cout << "\n------------------------------------" <<
+        "\nItens no seu carrinho:\n" << endl;
         for(it=carrinho.begin(); it!=carrinho.end(); ++it){
           cout << it->first << " => " << it->second << '\n';
         }
-    } else if(escolha == 5){
-        //Quebra do laço e saída do sistema
-        
+        cout << "\nTotal: " << 
+        "\n------------------------------------" << endl;
     } else if(escolha == 6){
         //Quebra do laço e saída do sistema
         cout << "\nSaindo do sistema...\n" << endl;
