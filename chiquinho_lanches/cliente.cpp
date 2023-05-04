@@ -114,12 +114,16 @@ void acessarCliente(){
         }
     } else if(escolha == 5){
         //Acesso ao carrinho, leitura do map e impressão do total:
+        float total_carrinho = 0;
         cout << "\n------------------------------------" <<
         "\nItens no seu carrinho:\n" << endl;
         for(it=carrinho.begin(); it!=carrinho.end(); ++it){
           cout << it->first << " => " << it->second << '\n';
         }
-        cout << "\nTotal: " << 
+        for(it=carrinho.begin(); it!=carrinho.end(); ++it){
+          total_carrinho += stof(it->second);
+        }
+        cout << "\nTotal: " << total_carrinho <<
         "\n------------------------------------" << endl;
     } else if(escolha == 6){
         //Quebra do laço e saída do sistema
