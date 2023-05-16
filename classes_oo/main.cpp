@@ -16,7 +16,11 @@ class Aluno{
     public:
         //Construtor de Aluno:
         Aluno(){
-            cout << "Construtor criado!" << endl;
+            nomeCompleto = "aluno";
+            cpf = "000.000.000-00";
+            idade = "00";
+            serie = "0";
+            matricula = 0;
         }
 
         //Construtor parametrizado de Aluno:
@@ -74,7 +78,12 @@ class Funcionario{
     public:
         //Construtor de Funcionario:
         Funcionario(){
-            cout << "Construtor criado!" << endl;
+            nomeCompleto = "funcionario";
+            cpf = "000.000.000-00";
+            idade = "00";
+            cargo = "cargo";
+            matricula = 0;
+            salario = 0.0;
         }
 
         //Construtor parametrizado de Funcionario:
@@ -121,19 +130,21 @@ class Funcionario{
         float getSalario() {
             return salario;
         }
-        float setSalario(float salario) {
+        void setSalario(float salario) {
             cin >> salario;
         }
 };
 
 class Escola{
     private:
+        //Atributos da escola:
         string nomeEscola;
         string cnpj;
-        vector<Funcionario> funcionarios[5];
-        vector<Aluno> aluno[10];
+        Funcionario *funcionarios = new Funcionario[5];
+        Aluno alunos[10];
     
     public:
+        //Getters e Setters da escola:
         string getNomeEscola() {
              return nomeEscola;
         }
@@ -146,17 +157,73 @@ class Escola{
         void setCnpj(string cpf) {
             cin >> cnpj;
         }
-        /*vector<Funcionario> getFuncionarios() {
+        Funcionario* getFuncionarios() {
             return funcionarios;
         }
-        void setFuncionarios(vector<Funcionario>){
-            cin >> funcionarios;
-        }*/
+        void setFuncionarios(Funcionario funcionario, int iterator) {
+            if(iterator < sizeof(funcionarios))
+                funcionarios[iterator] = funcionario;
+        }
+        Aluno* getAlunos() {
+            return alunos;
+        }
+        void setAlunos(Aluno aluno, int iterator) {
+            if(iterator < sizeof(alunos))
+                alunos[iterator] = aluno;
+        }
+    
+    //Funções da Escola:
+    void listarAlunos(){
+        Aluno *alunos_escola = getAlunos();
+        for(int i = 0; i < sizeof(alunos_escola); i++){
+            cout << alunos_escola[i].getNomeCompleto() << endl; 
+        }
+        cout << endl;
+    }
 
+    void listarFuncionarios(){
+        Funcionario* funcionarios_escola = getFuncionarios();
+        for(int i = 0; i < sizeof(funcionarios_escola); i++) {
+            cout << funcionarios_escola[i].getNomeCompleto() << endl;
+        }
+        cout << endl;
+    }
+
+    void adicionarAluno(string nomeCompleto, string cpf, string idade, string serie, long int matricula, int iterator){
+        Aluno aluno_escola;
+        aluno_escola.setNomeCompleto(nomeCompleto);
+        aluno_escola.setCpf(cpf);
+        aluno_escola.setIdade(idade);
+        aluno_escola.setSerie(serie);
+        aluno_escola.setMatricula(matricula);
+
+        setAlunos(aluno_escola, iterator);
+    }
+
+    void adicionarFuncionario(string nomeCompleto, string cpf, string idade, string cargo, long int matricula, float salario, int iterator){
+        Funcionario funcionario_escola;
+        funcionario_escola.setNomeCompleto(nomeCompleto);
+        funcionario_escola.setCpf(cpf);
+        funcionario_escola.setIdade(idade);
+        funcionario_escola.setCargo(cargo);
+        funcionario_escola.setMatricula(matricula);
+        funcionario_escola.setSalario(salario);
+
+        setFuncionarios(funcionario_escola, iterator);
+    }
+
+    float somarSalarioFuncionarios(Funcionario *funcionarios){
+        float soma = 0;
+        for(int i = 0; i < sizeof(funcionarios); i++){
+            soma += funcionarios[i].getSalario();
+        }
+
+        return soma;
+    }
 };
 
 int main(int argc, char const *argv[])
 {
-    cout << "RODOU!" << endl;
+    
     return 0;
 }
