@@ -22,3 +22,6 @@ O sistema permite ao gerente:
 5. excluir sanduiche cadastrado, identificando por nome e preço
 6. excluir suco cadastrado, identificando por nome e preço
 7. sair do sistema.
+
+# RH - ATACADO DOS CALÇADOS
+Projeto de sistema de RH para a empresa Atacado dos Calçados.
