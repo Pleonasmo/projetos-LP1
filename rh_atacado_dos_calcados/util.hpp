@@ -1,17 +1,22 @@
+#ifndef UTIL_HPP
+#define UTIL_HPP
+
 #include <iostream>
 
 using namespace std;
 
 typedef struct{
-    int ano;
-    int mes;
-    int dia;
+    int ano,
+        mes,
+        dia;
 } Data;
 
 typedef struct{
-    string cidade;
-    string bairro;
-    string rua;
-    string cep;
+    string cidade,
+        bairro,
+        rua,
+        cep;
     int numero;
 } Endereco;
+
+#endif
