@@ -1,5 +1,5 @@
 #include <iostream>
-#include "pessoa.hpp"
+#include "Pessoa.hpp"
 
 //Construtor vazio:
 Pessoa::Pessoa(){

@@ -2,7 +2,7 @@
 #define FUNCIONARIO_HPP
 
 #include <iostream>
-#include "util.hpp"
+#include "Util.hpp"
 
 class Funcionario{
     private:

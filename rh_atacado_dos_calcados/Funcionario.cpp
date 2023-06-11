@@ -1,10 +1,10 @@
 #include <iostream>
-#include "funcionario.hpp"
+#include "Funcionario.hpp"
 
 //Construtor vazio:
 Funcionario::Funcionario(){
     matricula = "00000";
-    salario = "00.00";
+    salario = "0.0";
     ingressoEmpresa = {0, 0, 0};
 }
 
