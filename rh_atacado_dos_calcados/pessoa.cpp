@@ -1,6 +1,7 @@
 #include <iostream>
 #include "pessoa.hpp"
 
+//Construtor vazio:
 Pessoa::Pessoa(){
     nome = "sem_nome";
     cpf = "sem_cpf";
