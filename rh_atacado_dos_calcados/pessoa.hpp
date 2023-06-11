@@ -1,5 +1,5 @@
-#ifndef PESSOA_H
-#define PESSOA_H
+#ifndef PESSOA_HPP
+#define PESSOA_HPP
 
 #include <iostream>
 #include "util.hpp"
