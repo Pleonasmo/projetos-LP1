@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Pessoa.hpp"
 
 //Construtor vazio:

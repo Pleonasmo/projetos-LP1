@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Funcionario.hpp"
 
 //Construtor vazio:

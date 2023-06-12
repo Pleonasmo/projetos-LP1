@@ -1,22 +1,22 @@
-#ifndef ASG_HPP
-#define ASG_HPP
+#ifndef VENDEDOR_HPP
+#define VENDEDOR_HPP
 
 #include "Pessoa.hpp"
 #include "Funcionario.hpp"
 
-class Asg : public Pessoa, Funcionario{
+class Vendedor : public Pessoa, Funcionario {
     private:
-        float adicionalInsalubridade;
+        char tipoVendedor;
     public:
-        //Construtor vazio:
-        Asg();
-
+        //Contrutor vazio:
+        Vendedor();
+        
         //Construtor parametrizado:
-        Asg(float ai);
+        Vendedor(char tv);
 
         //Getter e Setter:
-        float getAdicionalInsalubridade();
-        void setAdicionalInsalubridade(float ia);
+        char getTipoVendedor();
+        void setTipoVendedor(char tv);
 
         //Metodos virtuais de Funcionario:
         float calcularSalario(int diasFaltas) override;

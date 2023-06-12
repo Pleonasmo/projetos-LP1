@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Asg.hpp"
 
 //Construtor vazio:

@@ -1,7 +1,6 @@
 #ifndef PESSOA_HPP
 #define PESSOA_HPP
 
-#include <iostream>
 #include "Util.hpp"
 
 class Pessoa{

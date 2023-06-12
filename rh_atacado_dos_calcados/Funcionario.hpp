@@ -1,7 +1,6 @@
 #ifndef FUNCIONARIO_HPP
 #define FUNCIONARIO_HPP
 
-#include <iostream>
 #include "Util.hpp"
 
 class Funcionario{
