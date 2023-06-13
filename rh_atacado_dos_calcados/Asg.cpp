@@ -19,9 +19,29 @@ void Asg::setAdicionalInsalubridade(float ai){
     adicionalInsalubridade = ai;
 }
 
-//Metodos virtuais de Funcionario (PARA IMPLEMENTAR CALCULO ESPECIFICO):
+//Metodos virtuais de Funcionario:
 float Asg::calcularSalario(int diasFaltas){
-    return 1;
+    float salario_asg;
+    try{
+        salario_asg = stof(getSalario());
+    } catch(const std::invalid_argument e){
+        std::cerr << "O salario passado é inválido!" << endl;
+        salario_asg = 0;
+    } catch(const std::out_of_range e){
+        std::cerr << "O salario passado é inválido!" << endl;
+        salario_asg = 0;
+    }
+    
+    //Salario por dia trabalhado:
+    float salarioPorDia = salario_asg/30;
+
+    //Calculo de salario:
+    float descontoFaltas = diasFaltas*salarioPorDia;
+    float adicionalFilhos = getQtdFilhos()*100;
+    float salarioFinal = salario_asg + descontoFaltas + getAdicionalInsalubridade() - descontoFaltas;
+
+    //setSalario convertendo o valor de salarioFinal para string:
+    setSalario(std::to_string(salarioFinal));
 }
 
 float Asg::calcularRecisao(Data desligamento){
