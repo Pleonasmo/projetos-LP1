@@ -19,7 +19,7 @@ void Vendedor::setTipoVendedor(char tv){
     tipoVendedor = tv;
 }
 
-//Metodos virtuais de Funcionario (PARA IMPLEMENTAR CALCULO ESPECIFICO):
+//Metodos virtuais de Funcionario:
 float Vendedor::calcularSalario(int diasFaltas){
     float salario_vendedor;
     try{
