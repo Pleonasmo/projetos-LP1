@@ -32,6 +32,9 @@ float Asg::calcularSalario(int diasFaltas){
         salario_asg = 0;
     }
     
+    //definindo adicionalInsalubridade:
+    setAdicionalInsalubridade(5/100 * salario_asg);
+
     //Salario por dia trabalhado:
     float salarioPorDia = salario_asg/30;
 
