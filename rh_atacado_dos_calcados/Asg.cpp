@@ -40,8 +40,7 @@ float Asg::calcularSalario(int diasFaltas){
     float adicionalFilhos = getQtdFilhos()*100;
     float salarioFinal = salario_asg + descontoFaltas + getAdicionalInsalubridade() - descontoFaltas;
 
-    //setSalario convertendo o valor de salarioFinal para string:
-    setSalario(std::to_string(salarioFinal));
+    return salarioFinal;
 }
 
 float Asg::calcularRecisao(Data desligamento){
