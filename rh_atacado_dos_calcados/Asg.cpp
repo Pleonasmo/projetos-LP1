@@ -69,7 +69,7 @@ float Asg::calcularRecisao(Data desligamento){
     if(diferencaMeses < 0){
         diferencaMeses += 12;
     } if(diferencaDias < 0){
-        diferencaDias += 12;
+        diferencaDias += 30;
     }
 
     int diasTrabalhados = diferencaAnos*360 + diferencaMeses*30 + diferencaDias;
