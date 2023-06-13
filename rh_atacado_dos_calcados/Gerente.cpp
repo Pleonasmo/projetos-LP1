@@ -39,6 +39,8 @@ float Gerente::calcularSalario(int diasFaltas){
     float descontoFaltas = diasFaltas*salarioPorDia;
     float adicionalFilhos = getQtdFilhos()*100;
     float salarioFinal = salario_gerente + adicionalFilhos + getParticipacaoLucros() - descontoFaltas;
+
+    return salarioFinal;
 }
 
 float Gerente::calcularRecisao(Data desligamento){
