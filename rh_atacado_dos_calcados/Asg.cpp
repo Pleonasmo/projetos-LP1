@@ -25,10 +25,10 @@ float Asg::calcularSalario(int diasFaltas){
     try{
         salario_asg = stof(getSalario());
     } catch(const std::invalid_argument e){
-        std::cerr << "O salario passado é inválido!" << endl;
+        std::cout << "O salario passado é inválido!" << endl;
         salario_asg = 0;
     } catch(const std::out_of_range e){
-        std::cerr << "O salario passado é inválido!" << endl;
+        std::cout << "O salario passado é inválido!" << endl;
         salario_asg = 0;
     }
     
@@ -38,7 +38,7 @@ float Asg::calcularSalario(int diasFaltas){
     //Calculo de salario:
     float descontoFaltas = diasFaltas*salarioPorDia;
     float adicionalFilhos = getQtdFilhos()*100;
-    float salarioFinal = salario_asg + descontoFaltas + getAdicionalInsalubridade() - descontoFaltas;
+    float salarioFinal = salario_asg + adicionalFilhos + getAdicionalInsalubridade() - descontoFaltas;
 
     return salarioFinal;
 }
