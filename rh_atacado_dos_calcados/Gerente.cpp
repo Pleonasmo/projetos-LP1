@@ -19,7 +19,7 @@ void Gerente::setParticipacaoLucros(float pl){
     participacaoLucros = pl;
 }
 
-//Metodos virtuais de Funcionario:
+//Metodos virtuais de Funcionario sobrescritos para Gerente:
 float Gerente::calcularSalario(int diasFaltas){
     float salario_gerente;
     try{

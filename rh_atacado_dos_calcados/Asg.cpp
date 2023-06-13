@@ -19,7 +19,7 @@ void Asg::setAdicionalInsalubridade(float ai){
     adicionalInsalubridade = ai;
 }
 
-//Metodos virtuais de Funcionario:
+//Metodos virtuais de Funcionario sobrescritos para Asg:
 float Asg::calcularSalario(int diasFaltas){
     float salario_asg;
     try{
