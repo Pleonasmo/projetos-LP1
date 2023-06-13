@@ -19,9 +19,26 @@ void Gerente::setParticipacaoLucros(float pl){
     participacaoLucros = pl;
 }
 
-//Metodos virtuais de Funcionario (PARA IMPLEMENTAR CALCULO ESPECIFICO):
+//Metodos virtuais de Funcionario:
 float Gerente::calcularSalario(int diasFaltas){
-    return 3;
+    float salario_gerente;
+    try{
+        salario_gerente = stof(getSalario());
+    } catch(const std::invalid_argument e){
+        std::cout << "O salario passado é inválido!" << endl;
+        salario_gerente = 0;
+    } catch(const std::out_of_range e){
+        std::cout << "O salario passado é inválido!" << endl;
+        salario_gerente = 0;
+    }
+
+    //Salario por dia trabalhado:
+    float salarioPorDia = salario_gerente/30;
+
+    //Calculo de salario:
+    float descontoFaltas = diasFaltas*salarioPorDia;
+    float adicionalFilhos = getQtdFilhos()*100;
+    float salarioFinal = salario_gerente + adicionalFilhos + getParticipacaoLucros() - descontoFaltas;
 }
 
 float Gerente::calcularRecisao(Data desligamento){
