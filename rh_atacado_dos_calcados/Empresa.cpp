@@ -218,7 +218,78 @@ void Empresa::carregarAsg(){
 }
 
 void Empresa::carregarVendedor(){
-    std::cout << "carregarVendedor" << std::endl;
+    std::vector<std::string> dadosVendedor(20);
+    int iterador = 0;
+
+    //Leitura das linhas de empresa.txt:
+    try{
+        std::ifstream arquivo("dados/asg.txt");
+        if (!arquivo) {
+            throw std::runtime_error("Erro ao abrir o arquivo.");
+        } else {
+            std::string linha;
+            while (std::getline(arquivo, linha)) {
+                char primeiroChar = linha[0];
+                //Ignorando linhas com # e *:
+                if(primeiroChar != '#' && primeiroChar != '*'){
+                    dadosVendedor[iterador] = linha;
+                    iterador++;
+                    if(iterador == 20){
+                        Vendedor v;
+                        v.setNome(dadosVendedor[1]);
+                        v.setCpf(dadosVendedor[2]);
+                        v.setQtdFilhos(std::stoi(dadosVendedor[3]));
+                        v.setEstadoCivil(dadosVendedor[4]);
+                        
+                        //definindo endereço pessoal:
+                        Endereco ep;
+                        ep.cidade = dadosVendedor[5];
+                        ep.cep = dadosVendedor[6];
+                        ep.bairro = dadosVendedor[7];
+                        ep.rua = dadosVendedor[8];
+                        ep.numero = std::stoi(dadosVendedor[9]);
+
+                        v.setEnderecoPessoal(ep);
+
+                        //definindo data de nascimento:
+                        Data dn;
+                        dn.ano = std::stoi(dadosVendedor[10]);
+                        dn.mes = std::stoi(dadosVendedor[11]);
+                        dn.dia = std::stoi(dadosVendedor[12]);
+
+                        v.setDataNascimento(dn);
+
+                        v.setMatricula(dadosVendedor[13]);
+                        v.setSalario(dadosVendedor[14]);
+                        v.setTipoVendedor(dadosVendedor[15][0]);
+                        //calculando e atualizando salario:
+                        v.setSalario(std::to_string(v.calcularSalario(std::stof(dadosVendedor[16]))));
+
+                        //definindo data de ingresso na empresa:
+                        Data di;
+                        di.ano = std::stoi(dadosVendedor[17]);
+                        di.mes = std::stoi(dadosVendedor[18]);
+                        di.dia = std::stoi(dadosVendedor[19]);
+
+                        v.setIngressoEmpresa(di);
+
+                        //incrementando asg lido no vetor de asgs:
+                        vendedores.push_back(v);
+
+                        iterador = 0;
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        arquivo.close();
+    } catch(const std::exception& e){
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    std::cout << "Carregou Vendedor com sucesso." << std::endl;
 }
 
 void Empresa::carregarGerente(){

@@ -4,7 +4,7 @@
 #include "Pessoa.hpp"
 #include "Funcionario.hpp"
 
-class Vendedor : public Pessoa, Funcionario {
+class Vendedor : public Pessoa, public Funcionario {
     private:
         char tipoVendedor;
     public:
