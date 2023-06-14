@@ -426,7 +426,20 @@ void Empresa::carregarDono(){
 }
 
 void Empresa::imprimeAsgs(){
-    std::cout << "imprimeAsgs" << std::endl;
+    std::vector<Asg> listaAsgs = getAsgs();
+    for(int i = 0; i < listaAsgs.size(); i++) {
+        cout << "ASG numero " << i << ":" << endl;
+        cout << "Nome: " << listaAsgs[i].getNome() << endl;
+        cout << "CPF: " << listaAsgs[i].getCpf() << endl;
+        cout << "Data de nascimento: " << listaAsgs[i].getDataNascimento().dia << "/" << listaAsgs[i].getDataNascimento().mes << "/" << listaAsgs[i].getDataNascimento().ano << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+        cout << "ASG numero " << i << endl;
+    }
 }
 
 void Empresa::imprimeVendedores(){
