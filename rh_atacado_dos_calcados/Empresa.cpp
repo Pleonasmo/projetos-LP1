@@ -104,13 +104,40 @@ void Empresa::carregarFuncoes(){
         std::cerr << "Erro: " << e.what() << std::endl;
     }
     
-
-
-    
 }
 
 void Empresa::carregarEmpresa(){
-    std::cout << "carregarEmpresa" << std::endl;
+    std::vector<std::string> dadosEmpresa(3);
+    int iterador = 0;
+
+    //Leitura das linhas de empresa.txt:
+    try{
+        std::ifstream arquivo("dados/empresa.txt");
+        if (!arquivo) {
+            throw std::runtime_error("Erro ao abrir o arquivo.");
+        } else {
+            std::string linha;
+            while (std::getline(arquivo, linha)) {
+                char primeiroChar = linha[0];
+                //Ignorando linhas com #:
+                if(primeiroChar != '#'){
+                    dadosEmpresa[iterador] = linha;
+                    iterador++;
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        arquivo.close();
+    } catch(const std::exception& e){
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    //Carregando os dados na empresa:
+    setNomeEmpresa(dadosEmpresa[0]);
+    setCnpj(dadosEmpresa[1]);
+    setFaturamentoMensal(stof(dadosEmpresa[2]));
 }
 
 void Empresa::carregarAsg(){
