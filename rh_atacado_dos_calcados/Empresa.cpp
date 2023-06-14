@@ -368,7 +368,61 @@ void Empresa::carregarGerente(){
 }
 
 void Empresa::carregarDono(){
-    std::cout << "carregarDono" << std::endl;
+    std::vector<std::string> dadosDono(12);
+    int iterador = 0;
+
+    //Leitura das linhas de empresa.txt:
+    try{
+        std::ifstream arquivo("dados/dono.txt");
+        if (!arquivo) {
+            throw std::runtime_error("Erro ao abrir o arquivo.");
+        } else {
+            std::string linha;
+            while (std::getline(arquivo, linha)) {
+                char primeiroChar = linha[0];
+                //Ignorando linhas com # e *:
+                if(primeiroChar != '#'){
+                    dadosDono[iterador] = linha;
+                    iterador++;
+                    if(iterador == 12){
+                        Pessoa d;
+                        d.setNome(dadosDono[0]);
+                        d.setCpf(dadosDono[1]);
+                        d.setQtdFilhos(std::stoi(dadosDono[2]));
+                        d.setEstadoCivil(dadosDono[3]);
+
+                        Endereco ep;
+                        ep.cidade = dadosDono[4];
+                        ep.cep = dadosDono[5];
+                        ep.bairro = dadosDono[6];
+                        ep.rua = dadosDono[7];
+                        ep.numero = std::stoi(dadosDono[8]);
+
+                        d.setEnderecoPessoal(ep);
+
+                        Data dn;
+                        dn.ano = std::stoi(dadosDono[9]);
+                        dn.mes = std::stoi(dadosDono[10]);
+                        dn.dia = std::stoi(dadosDono[11]);
+
+                        d.setDataNascimento(dn);
+
+                        dono = d;
+                        break;
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        arquivo.close();
+    } catch(const std::exception& e){
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    std::cout << "Carregou Dono com sucesso." << std::endl;
+
 }
 
 void Empresa::imprimeAsgs(){
