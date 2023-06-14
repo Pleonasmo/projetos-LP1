@@ -138,10 +138,83 @@ void Empresa::carregarEmpresa(){
     setNomeEmpresa(dadosEmpresa[0]);
     setCnpj(dadosEmpresa[1]);
     setFaturamentoMensal(stof(dadosEmpresa[2]));
+
+    std::cout << "Carregou empresa com sucesso." << std::endl;
 }
 
 void Empresa::carregarAsg(){
-    std::cout << "carregarAsg" << std::endl;
+    std::vector<std::string> dadosAsg(20);
+    int iterador = 0;
+
+    //Leitura das linhas de empresa.txt:
+    try{
+        std::ifstream arquivo("dados/asg.txt");
+        if (!arquivo) {
+            throw std::runtime_error("Erro ao abrir o arquivo.");
+        } else {
+            std::string linha;
+            while (std::getline(arquivo, linha)) {
+                char primeiroChar = linha[0];
+                //Ignorando linhas com # e *:
+                if(primeiroChar != '#' && primeiroChar != '*'){
+                    dadosAsg[iterador] = linha;
+                    iterador++;
+                    if(iterador == 20){
+                        Asg a;
+                        a.setNome(dadosAsg[1]);
+                        a.setCpf(dadosAsg[2]);
+                        a.setQtdFilhos(std::stoi(dadosAsg[3]));
+                        a.setEstadoCivil(dadosAsg[4]);
+                        
+                        //definindo endereço pessoal:
+                        Endereco ep;
+                        ep.cidade = dadosAsg[5];
+                        ep.cep = dadosAsg[6];
+                        ep.bairro = dadosAsg[7];
+                        ep.rua = dadosAsg[8];
+                        ep.numero = std::stoi(dadosAsg[9]);
+
+                        a.setEnderecoPessoal(ep);
+
+                        //definindo data de nascimento:
+                        Data dn;
+                        dn.ano = std::stoi(dadosAsg[10]);
+                        dn.mes = std::stoi(dadosAsg[11]);
+                        dn.dia = std::stoi(dadosAsg[12]);
+
+                        a.setDataNascimento(dn);
+
+                        a.setMatricula(dadosAsg[13]);
+                        a.setSalario(dadosAsg[14]);
+                        a.setAdicionalInsalubridade(std::stof(dadosAsg[15]));
+                        //calculando e atualizando salario:
+                        a.setSalario(std::to_string(a.calcularSalario(std::stof(dadosAsg[16]))));
+
+                        //definindo data de ingresso na empresa:
+                        Data di;
+                        di.ano = std::stoi(dadosAsg[17]);
+                        di.mes = std::stoi(dadosAsg[18]);
+                        di.dia = std::stoi(dadosAsg[19]);
+
+                        a.setIngressoEmpresa(di);
+
+                        //incrementando asg lido no vetor de asgs:
+                        asgs.push_back(a);
+
+                        iterador = 0;
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        arquivo.close();
+    } catch(const std::exception& e){
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    std::cout << "Carregou ASG com sucesso." << std::endl;
 }
 
 void Empresa::carregarVendedor(){
