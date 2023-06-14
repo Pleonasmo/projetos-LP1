@@ -223,7 +223,7 @@ void Empresa::carregarVendedor(){
 
     //Leitura das linhas de empresa.txt:
     try{
-        std::ifstream arquivo("dados/asg.txt");
+        std::ifstream arquivo("dados/vendedor.txt");
         if (!arquivo) {
             throw std::runtime_error("Erro ao abrir o arquivo.");
         } else {
@@ -293,7 +293,78 @@ void Empresa::carregarVendedor(){
 }
 
 void Empresa::carregarGerente(){
-    std::cout << "carregarGerente" << std::endl;
+    std::vector<std::string> dadosGerente(20);
+    int iterador = 0;
+
+    //Leitura das linhas de empresa.txt:
+    try{
+        std::ifstream arquivo("dados/gerente.txt");
+        if (!arquivo) {
+            throw std::runtime_error("Erro ao abrir o arquivo.");
+        } else {
+            std::string linha;
+            while (std::getline(arquivo, linha)) {
+                char primeiroChar = linha[0];
+                //Ignorando linhas com # e *:
+                if(primeiroChar != '#' && primeiroChar != '*'){
+                    dadosGerente[iterador] = linha;
+                    iterador++;
+                    if(iterador == 20){
+                        Gerente g;
+                        g.setNome(dadosGerente[1]);
+                        g.setCpf(dadosGerente[2]);
+                        g.setQtdFilhos(std::stoi(dadosGerente[3]));
+                        g.setEstadoCivil(dadosGerente[4]);
+                        
+                        //definindo endereço pessoal:
+                        Endereco ep;
+                        ep.cidade = dadosGerente[5];
+                        ep.cep = dadosGerente[6];
+                        ep.bairro = dadosGerente[7];
+                        ep.rua = dadosGerente[8];
+                        ep.numero = std::stoi(dadosGerente[9]);
+
+                        g.setEnderecoPessoal(ep);
+
+                        //definindo data de nascimento:
+                        Data dn;
+                        dn.ano = std::stoi(dadosGerente[10]);
+                        dn.mes = std::stoi(dadosGerente[11]);
+                        dn.dia = std::stoi(dadosGerente[12]);
+
+                        g.setDataNascimento(dn);
+
+                        g.setMatricula(dadosGerente[13]);
+                        g.setSalario(dadosGerente[14]);
+                        g.setParticipacaoLucros(stof(dadosGerente[15]));
+                        //calculando e atualizando salario:
+                        g.setSalario(std::to_string(g.calcularSalario(std::stof(dadosGerente[16]))));
+
+                        //definindo data de ingresso na empresa:
+                        Data di;
+                        di.ano = std::stoi(dadosGerente[17]);
+                        di.mes = std::stoi(dadosGerente[18]);
+                        di.dia = std::stoi(dadosGerente[19]);
+
+                        g.setIngressoEmpresa(di);
+
+                        //incrementando asg lido no vetor de asgs:
+                        gerentes.push_back(g);
+
+                        iterador = 0;
+                    }
+                } else {
+                    continue;
+                }
+            }
+        }
+
+        arquivo.close();
+    } catch(const std::exception& e){
+        std::cerr << "Erro: " << e.what() << std::endl;
+    }
+
+    std::cout << "Carregou Gerente com sucesso." << std::endl;
 }
 
 void Empresa::carregarDono(){

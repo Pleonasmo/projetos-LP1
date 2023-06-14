@@ -4,7 +4,7 @@
 #include "Pessoa.hpp"
 #include "Funcionario.hpp"
 
-class Gerente : public Pessoa, Funcionario {
+class Gerente : public Pessoa, public Funcionario {
     private:
         float participacaoLucros;
     public:
