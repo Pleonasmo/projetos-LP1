@@ -427,7 +427,7 @@ void Empresa::carregarDono(){
 
 void Empresa::imprimeAsgs(){
     std::vector<Asg> listaAsgs = getAsgs();
-    cout << "\n" << endl;
+    cout << "\n----- LISTA DE ASGS DA EMPRESA -----" << endl;
     for(int i = 0; i < listaAsgs.size(); i++) {
         cout << "ASG numero " << i << ":" << endl;
         cout << "Nome: " << listaAsgs[i].getNome() << endl;
@@ -443,10 +443,28 @@ void Empresa::imprimeAsgs(){
         cout << "Adicional de insalubridade: " << listaAsgs[i].getAdicionalInsalubridade() << endl;
         cout << "\n" << endl;
     }
+    cout << "----------------------------------------" << endl;
 }
 
 void Empresa::imprimeVendedores(){
-    std::cout << "imprimeVendedores" << std::endl;
+    std::vector<Vendedor> listaVendedores = getVendedores();
+    cout << "\n----- LISTA DE VENDEDORES DA EMPRESA -----" << endl;
+    for(int i = 0; i < listaVendedores.size(); i++) {
+        cout << "Vendedor numero " << i << ":" << endl;
+        cout << "Nome: " << listaVendedores[i].getNome() << endl;
+        cout << "CPF: " << listaVendedores[i].getCpf() << endl;
+        cout << "Data de nascimento: " << listaVendedores[i].getDataNascimento().dia << "/" << listaVendedores[i].getDataNascimento().mes << "/" << listaVendedores[i].getDataNascimento().ano << endl;
+        cout << "Endereço: " << listaVendedores[i].getEnderecoPessoal().cidade << ", " << listaVendedores[i].getEnderecoPessoal().bairro << ", " << listaVendedores[i].getEnderecoPessoal().cep 
+        << ", Rua " << listaVendedores[i].getEnderecoPessoal().rua << ", " << listaVendedores[i].getEnderecoPessoal().numero << endl;
+        cout << "Estado civil:  " << listaVendedores[i].getEstadoCivil() << endl;
+        cout << "Quantidade de filhos " << listaVendedores[i].getQtdFilhos() << endl;
+        cout << "Matricula: " << listaVendedores[i].getMatricula() << endl;
+        cout << "Salario: " << listaVendedores[i].getSalario() << endl;
+        cout << "Data de ingresso: " << listaVendedores[i].getIngressoEmpresa().dia << "/" << listaVendedores[i].getIngressoEmpresa().mes << "/" << listaVendedores[i].getIngressoEmpresa().ano << endl;
+        cout << "Tipo de vendedor: " << listaVendedores[i].getTipoVendedor() << endl;
+        cout << "\n" << endl;
+    }
+    cout << "----------------------------------------" << endl;
 }
 
 void Empresa::imprimeGerentes(){
