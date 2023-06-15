@@ -427,18 +427,21 @@ void Empresa::carregarDono(){
 
 void Empresa::imprimeAsgs(){
     std::vector<Asg> listaAsgs = getAsgs();
+    cout << "\n" << endl;
     for(int i = 0; i < listaAsgs.size(); i++) {
         cout << "ASG numero " << i << ":" << endl;
         cout << "Nome: " << listaAsgs[i].getNome() << endl;
         cout << "CPF: " << listaAsgs[i].getCpf() << endl;
         cout << "Data de nascimento: " << listaAsgs[i].getDataNascimento().dia << "/" << listaAsgs[i].getDataNascimento().mes << "/" << listaAsgs[i].getDataNascimento().ano << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
-        cout << "ASG numero " << i << endl;
+        cout << "Endereço: " << listaAsgs[i].getEnderecoPessoal().cidade << ", " << listaAsgs[i].getEnderecoPessoal().bairro << ", " << listaAsgs[i].getEnderecoPessoal().cep 
+        << ", Rua " << listaAsgs[i].getEnderecoPessoal().rua << ", " << listaAsgs[i].getEnderecoPessoal().numero << endl;
+        cout << "Estado civil:  " << listaAsgs[i].getEstadoCivil() << endl;
+        cout << "Quantidade de filhos " << listaAsgs[i].getQtdFilhos() << endl;
+        cout << "Matricula: " << listaAsgs[i].getMatricula() << endl;
+        cout << "Salario: " << listaAsgs[i].getSalario() << endl;
+        cout << "Data de ingresso: " << listaAsgs[i].getIngressoEmpresa().dia << "/" << listaAsgs[i].getIngressoEmpresa().mes << "/" << listaAsgs[i].getIngressoEmpresa().ano << endl;
+        cout << "Adicional de insalubridade: " << listaAsgs[i].getAdicionalInsalubridade() << endl;
+        cout << "\n" << endl;
     }
 }
 
