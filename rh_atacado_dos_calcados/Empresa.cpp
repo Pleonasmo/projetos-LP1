@@ -435,7 +435,7 @@ void Empresa::imprimeAsgs(){
         cout << "Data de nascimento: " << listaAsgs[i].getDataNascimento().dia << "/" << listaAsgs[i].getDataNascimento().mes << "/" << listaAsgs[i].getDataNascimento().ano << endl;
         cout << "Endereço: " << listaAsgs[i].getEnderecoPessoal().cidade << ", " << listaAsgs[i].getEnderecoPessoal().bairro << ", " << listaAsgs[i].getEnderecoPessoal().cep 
         << ", Rua " << listaAsgs[i].getEnderecoPessoal().rua << ", " << listaAsgs[i].getEnderecoPessoal().numero << endl;
-        cout << "Estado civil:  " << listaAsgs[i].getEstadoCivil() << endl;
+        cout << "Estado civil: " << listaAsgs[i].getEstadoCivil() << endl;
         cout << "Quantidade de filhos " << listaAsgs[i].getQtdFilhos() << endl;
         cout << "Matricula: " << listaAsgs[i].getMatricula() << endl;
         cout << "Salario: " << listaAsgs[i].getSalario() << endl;
@@ -456,7 +456,7 @@ void Empresa::imprimeVendedores(){
         cout << "Data de nascimento: " << listaVendedores[i].getDataNascimento().dia << "/" << listaVendedores[i].getDataNascimento().mes << "/" << listaVendedores[i].getDataNascimento().ano << endl;
         cout << "Endereço: " << listaVendedores[i].getEnderecoPessoal().cidade << ", " << listaVendedores[i].getEnderecoPessoal().bairro << ", " << listaVendedores[i].getEnderecoPessoal().cep 
         << ", Rua " << listaVendedores[i].getEnderecoPessoal().rua << ", " << listaVendedores[i].getEnderecoPessoal().numero << endl;
-        cout << "Estado civil:  " << listaVendedores[i].getEstadoCivil() << endl;
+        cout << "Estado civil: " << listaVendedores[i].getEstadoCivil() << endl;
         cout << "Quantidade de filhos " << listaVendedores[i].getQtdFilhos() << endl;
         cout << "Matricula: " << listaVendedores[i].getMatricula() << endl;
         cout << "Salario: " << listaVendedores[i].getSalario() << endl;
@@ -468,11 +468,37 @@ void Empresa::imprimeVendedores(){
 }
 
 void Empresa::imprimeGerentes(){
-    std::cout << "imprimeGerentes" << std::endl;
+    std::vector<Gerente> listaGerentes = getGerentes();
+    cout << "\n----- LISTA DE GERENTES DA EMPRESA -----" << endl;
+    for(int i = 0; i < listaGerentes.size(); i++) {
+        cout << "Gerente numero " << i << ":" << endl;
+        cout << "Nome: " << listaGerentes[i].getNome() << endl;
+        cout << "CPF: " << listaGerentes[i].getCpf() << endl;
+        cout << "Data de nascimento: " << listaGerentes[i].getDataNascimento().dia << "/" << listaGerentes[i].getDataNascimento().mes << "/" << listaGerentes[i].getDataNascimento().ano << endl;
+        cout << "Endereço: " << listaGerentes[i].getEnderecoPessoal().cidade << ", " << listaGerentes[i].getEnderecoPessoal().bairro << ", " << listaGerentes[i].getEnderecoPessoal().cep 
+        << ", Rua " << listaGerentes[i].getEnderecoPessoal().rua << ", " << listaGerentes[i].getEnderecoPessoal().numero << endl;
+        cout << "Estado civil: " << listaGerentes[i].getEstadoCivil() << endl;
+        cout << "Quantidade de filhos " << listaGerentes[i].getQtdFilhos() << endl;
+        cout << "Matricula: " << listaGerentes[i].getMatricula() << endl;
+        cout << "Salario: " << listaGerentes[i].getSalario() << endl;
+        cout << "Data de ingresso: " << listaGerentes[i].getIngressoEmpresa().dia << "/" << listaGerentes[i].getIngressoEmpresa().mes << "/" << listaGerentes[i].getIngressoEmpresa().ano << endl;
+        cout << "Participação nos lucros: " << listaGerentes[i].getParticipacaoLucros() << endl;
+        cout << "\n" << endl;
+    }
+    cout << "----------------------------------------" << endl;
 }
 
 void Empresa::imprimeDono(){
-    std::cout << "imprimeDono" << std::endl;
+    cout << "\n----- DONO DA EMPRESA -----" << endl;
+        cout << "Nome: " << dono.getNome() << endl;
+        cout << "CPF: " << dono.getCpf() << endl;
+        cout << "Data de nascimento: " << dono.getDataNascimento().dia << "/" << dono.getDataNascimento().mes << "/" << dono.getDataNascimento().ano << endl;
+        cout << "Endereço: " << dono.getEnderecoPessoal().cidade << ", " << dono.getEnderecoPessoal().bairro << ", " << dono.getEnderecoPessoal().cep 
+        << ", Rua " << dono.getEnderecoPessoal().rua << ", " << dono.getEnderecoPessoal().numero << endl;
+        cout << "Estado civil: " << dono.getEstadoCivil() << endl;
+        cout << "Quantidade de filhos " << dono.getQtdFilhos() << endl;
+        cout << "\n" << endl;
+    cout << "----------------------------------------" << endl;
 }
 
 void Empresa::buscaFuncionario(int matricula){
